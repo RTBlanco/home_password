@@ -11,8 +11,9 @@ def login():
 
   if request.method == "POST":
     user = User.query.filter_by(username=request.form["username"]).first()
-    login_user(user)
-    return redirect(url_for('home'))
+    if user is not None:
+      login_user(user)
+      return redirect(url_for('home'))
 
   return render_template('login.html')
 
@@ -23,10 +24,10 @@ def home():
   return render_template('home.html')
   
 
-
 @app.route('/logout')
 def logout():
-  session.pop('username', None)
+  # session.pop('username', None)
+  logout_user()
   return redirect(url_for('login'))
 
 
