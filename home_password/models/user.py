@@ -11,7 +11,7 @@ class User(db.Model):
 
   def save(self):
     db.session.add(self)
-    db.session.commit(self)
+    db.session.commit()
 
   @classmethod
   def create_user(cls, arg):
@@ -19,7 +19,7 @@ class User(db.Model):
 
   @classmethod
   def create_admin(cls, arg):
-    return cls(username=arg["username"], password=["password"], is_admin=True)
+    return cls(username=arg["username"], password=arg["password"], is_admin=True)
 
 
   def __repr__(self):
