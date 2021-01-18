@@ -1,6 +1,7 @@
 from home_password import app
-from flask import render_template, send_from_directory, url_for, request, redirect
+from flask import render_template, url_for, request, redirect
 
-@app.route('/')
+@app.route('/', methods=["GET",'POST'])
 def home():
-  return "<h1>Home</h1>"
+  print(dict(request.form))
+  return render_template('index.html')
