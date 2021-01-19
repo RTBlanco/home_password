@@ -1,6 +1,7 @@
 from home_password import db, login_manager, bcrypt
 from home_password.models import sites 
 from flask_login import UserMixin
+from flask import current_app
 
 
 @login_manager.user_loader

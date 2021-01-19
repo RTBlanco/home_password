@@ -16,7 +16,10 @@ def create_app(config_class=Config):
   app = Flask(__name__)
   app.config.from_object(Config)
 
-  db.init_app(app)
+  with app.app_context():
+    db.init_app(app)
+    # init_db()
+
   login_manager.init_app(app)
   bcrypt.init_app(app)
 

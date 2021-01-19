@@ -27,7 +27,6 @@ def home():
 
 @users.route('/logout')
 def logout():
-  # session.pop('username', None)
   logout_user()
   return redirect(url_for('users.login'))
 
@@ -37,12 +36,12 @@ def logout():
 def new_user():
   if request.method == "POST":
     print(dict(request.form))
-    
+
     if request.form["user_type"] == 'admin':
       user = User.create_admin(request.form)
-      user.save
+      user.save()
     else:
       user = User.create_user(request.form)
-      user.save
+      user.save()
 
   return render_template('users/new.html')
