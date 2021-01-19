@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="container">
+    <form action="/admin/site/new" method="POST">
+      <label for="site_name">
+        <h1>Site name:</h1>
+      </label>
+      <input type="text" name="username" id="username" required>
+      <label for="site_password">
+        <h1>Password:</h1>
+      </label>
+      <input type="text" name="site_password" id="password" required>
+      <br>
+      <input type="submit">
+    </form>
+  </div>
+{% endblock content %}

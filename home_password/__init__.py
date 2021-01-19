@@ -24,12 +24,14 @@ def create_app(config_class=Config):
   bcrypt.init_app(app)
 
   # blueprint
-  from home_password.users.routes import users
-  from home_password.sites.routes import sites
-  from home_password.main.routes import main
+  from home_password.blueprints.users.routes import users
+  from home_password.blueprints.sites.routes import sites
+  from home_password.blueprints.main.routes import main
+  from home_password.blueprints.admin.routes import admin
 
   app.register_blueprint(users)
   app.register_blueprint(sites)
   app.register_blueprint(main)
+  app.register_blueprint(admin)
 
   return app
