@@ -1,15 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class='container'>
-    <form action="/login" method="POST">
+  <div class="container">
+    <form action="/user/new" method="POST">
       <label for="username">
-        <h1>username</h1>
+        <h1>Username:</h1>
       </label>
       <input type="text" name="username" id="username">
       <label for="password">
-        <h1>password</h1>
+        <h1>Password:</h1>
       </label>
       <input type="password" name="password" id="password">
+      <br>
+      <input type="radio" name="user_type" value="admin" id="admin">admin
+      <input type="radio" name="user_type" value="regular" id="regular">regular
+      <br>
       <input type="submit">
     </form>
   </div>

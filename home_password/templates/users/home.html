@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="container">
+    <h1>you are logged in as {{current_user.username}} </h1>
+    <a href="/logout"><button>log out</button></a>
+    <a href="/sites"><button>See sites</button></a>
+  </div>
+{% endblock content %}
