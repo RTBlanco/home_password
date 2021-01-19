@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from flask_bcyrpt import Bcrypt
+from flask_bcrypt import Bcrypt
 from home_password.config import Config
 
 # Extensions
@@ -19,7 +19,7 @@ def create_app(config_class=Config):
   db.init_app(app)
   login_manager.init_app(app)
   bcrypt.init_app(app)
-  
+
   # blueprint
   from home_password.users.routes import users
   from home_password.sites.routes import sites

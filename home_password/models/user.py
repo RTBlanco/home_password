@@ -1,4 +1,4 @@
-from home_password import db, login_manager
+from home_password import db, login_manager, bcrypt
 from home_password.models import sites 
 from flask_login import UserMixin
 
@@ -16,13 +16,25 @@ class User(db.Model, UserMixin):
   sites = db.relationship('Site', secondary=sites, lazy='subquery',
         backref=db.backref('users', lazy=True))
 
+  def save(self):
+    db.session.add(self)
+    db.session.commit()
+
+  def valid_login(self, password):
+    """Checks if the password is correct
+    the given instance"""
+    return bcrypt.check_password_hash(self.password, password)
+
+
   @classmethod
   def create_user(cls, arg):
-    return cls(username=arg["username"], password=["password"])
+    """ Creats a new Regular User Obj"""
+    return cls(username=arg["username"], password=bcrypt.generate_password_hash(arg["password"]).decode('utf-8'))
 
   @classmethod
   def create_admin(cls, arg):
-    return cls(username=arg["username"], password=arg["password"], is_admin=True)
+    """ Creats a new Admin User Obj"""
+    return cls(username=arg["username"], password=bcrypt.generate_password_hash(arg["password"]).decode('utf-8'), is_admin=True)
 
 
   def __repr__(self):
