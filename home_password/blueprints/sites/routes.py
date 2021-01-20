@@ -10,9 +10,13 @@ def site():
   return render_template('sites/index.html', all_sites=Site.query.all())
 
 @sites.route('/sites/new', methods=["GET", "POST"])
+@login_required
 def new_site():
   if request.method == "POST":
     site = Site.create(request.form)
     site.save()
+    current_user.sites.append(site)
+    current_user.save()
+    # print(current_user)
     return redirect(url_for('sites.site'))
   return render_template('sites/new.html')
