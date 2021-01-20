@@ -32,3 +32,11 @@ def new_user():
 @login_required
 def users():
   return render_template('users/admin/index.html', users=User.query.all())
+
+
+@admin.route('/admin/users/edit/<integer:id>', methods=["POST", "GET"])
+@login_required
+def edit_user(id):
+  user = User.query.filter_by(id=id).first_or_404()
+  if request.method == "POST":
+    pass
