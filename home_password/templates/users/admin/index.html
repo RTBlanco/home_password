@@ -3,6 +3,7 @@
   {% for user in users:%}
     <div class="container">
       <h1>{{user.username}}</h1>
+      <a href="/admin/users/edit/{{user.id}}"><button>Edit</button></a>
       <ul>
       {% for site in user.sites %}
         <li>{{site.name}}</li>

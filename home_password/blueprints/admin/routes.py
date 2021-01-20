@@ -1,4 +1,3 @@
-from re import template
 from flask import render_template, url_for, request, redirect, session ,Blueprint
 from home_password.models.user import User
 from home_password.models.site import Site
@@ -31,12 +30,14 @@ def new_user():
 @admin.route('/admin/users', methods=["GET"])
 @login_required
 def users():
-  return render_template('users/admin/index.html', users=User.query.all())
+  users = User.query.filter(User.id != current_user.id).all()
+  return render_template('users/admin/index.html', users=users)
 
 
-@admin.route('/admin/users/edit/<integer:id>', methods=["POST", "GET"])
+@admin.route('/admin/users/edit/<int:id>', methods=["POST", "GET"])
 @login_required
 def edit_user(id):
   user = User.query.filter_by(id=id).first_or_404()
+  return f"{user.id}"
   if request.method == "POST":
     pass
