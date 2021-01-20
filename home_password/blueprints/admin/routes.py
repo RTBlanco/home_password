@@ -1,4 +1,4 @@
-from flask import render_template, url_for, request, redirect, session ,Blueprint
+from flask import render_template, url_for, request, redirect, session ,Blueprint, flash
 from home_password.models.user import User
 from home_password.models.site import Site
 from flask_login import current_user, login_required
@@ -17,14 +17,19 @@ def home():
 def new_user():
   if request.method == "POST":
     print(dict(request.form))
+    if User.query.filter_by(username=request.form["username"]).first() is None:
+      if 'admin' in request.form:
+        user = User.create_admin(request.form)
+        user.save()
+      else:
+        user = User.create_user(request.form)
+        user.save()
 
-    if 'admin' in request.form:
-      user = User.create_admin(request.form)
+      user.add_sites(request.form.getlist('site'))
       user.save()
-    else:
-      user = User.create_user(request.form)
-      user.save()
-  return render_template('users/admin/new_user.html')
+      return redirect("admin.home")
+    flash("Username in database", "error")
+  return render_template('users/admin/new_user.html', sites=Site.query.all())
 
 
 @admin.route('/admin/users', methods=["GET"])
@@ -44,10 +49,7 @@ def edit_user(id):
     print(request.form.getlist('site'))
     if request.form["action"] == "Save":
       user.sites.clear()
-      for site in request.form.getlist('site'):
-        the_site = Site.query.filter_by(id=site).first()
-        # if site_id == site.id:
-        user.sites.append(the_site)
+      user.add_sites(request.form.getlist('site'))
       user.save()
   return render_template('users/admin/edit_user.html', user=user, sites=sites)
     

@@ -1,5 +1,6 @@
 from home_password import db, login_manager, bcrypt
-from home_password.models import sites 
+from home_password.models import sites
+from home_password.models.site import Site 
 from flask_login import UserMixin
 from flask import current_app
 
@@ -25,6 +26,12 @@ class User(db.Model, UserMixin):
     """Checks if the password is correct
     the given instance"""
     return bcrypt.check_password_hash(self.password, password)
+
+  def add_sites(self, list):
+    """Takes in a list of site ids, finds them in the database
+    and assigns them to the user """
+    for site in list:
+        self.sites.append(Site.query.filter_by(id=site).first())
 
 
   @classmethod
