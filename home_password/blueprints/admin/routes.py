@@ -38,6 +38,16 @@ def users():
 @login_required
 def edit_user(id):
   user = User.query.filter_by(id=id).first_or_404()
-  return f"{user.id}"
+  sites = Site.query.all()
   if request.method == "POST":
-    pass
+    print(dict(request.form))
+    print(request.form.getlist('site'))
+    if request.form["action"] == "Save":
+      user.sites.clear()
+      for site in request.form.getlist('site'):
+        the_site = Site.query.filter_by(id=site).first()
+        # if site_id == site.id:
+        user.sites.append(the_site)
+      user.save()
+  return render_template('users/admin/edit_user.html', user=user, sites=sites)
+    

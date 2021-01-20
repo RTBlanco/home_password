@@ -5,15 +5,26 @@
       <label for="username">
         <h1>Username:</h1>
       </label>
-      <input type="text" name="username" id="username" value="{{user.username}}" required>
+      <input type="text" name="username" id="username" value="{{user.username}}">
       <label for="password">
         <h1>Password:</h1>
       </label>
-      <input type="text" name="password" id="password" required>
+      <input type="text" name="password" id="password">
       <br>
+      <label for="user_type">
+        <h1>User Type</h1>
+      </label>
       <input type="radio" name="user_type" value="admin" id="admin">admin
-      <br>
-      <input type="submit">
+      <label for="site">
+        <h1>Sites</h1>
+      </label>
+      {% for site in sites:%}
+        <input type="checkbox" value="{{site.id}}" name="site" id="site" {%if user in site.users%}checked{%endif%}>{{site.name}}
+      {% endfor %}
+      <input type="submit" value="Save" name="action">
+    </form>
+    <form action="" method="POST">
+      <input type="submit" value="Delete" name='action' >
     </form>
   </div>
 {% endblock content %}

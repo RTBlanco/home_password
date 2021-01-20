@@ -35,3 +35,13 @@ def create_app(config_class=Config):
   app.register_blueprint(admin)
 
   return app
+
+def set_up():
+  from home_password import create_app
+  app = create_app()
+  app.app_context().push()
+
+  from home_password import db
+  from home_password.models.user import User
+  from home_password.models.site import Site
+  return db, User, Site
