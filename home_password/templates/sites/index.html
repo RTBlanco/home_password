@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class="container">
-    <h1>Name: {{name}}</h1>
-    <h1>Password: {{password}}</h1>
-  </div>
+  {% for site in all_sites:%}
+    <div class="container">
+      <h1>Name: {{site.name}} </h1>
+      <h1>Password: {{site.password}}</h1>
+    </div>
+  {% endfor %}
 {% endblock content %}

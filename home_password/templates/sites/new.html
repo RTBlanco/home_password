@@ -1,15 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
   <div class="container">
-    <form action="/sites" method="POST">
+    <form action="/sites/new" method="POST">
       <label for="site_name">
         <h1>Site Name:</h1>
       </label>
       <input type="text" name="site_name" id="site_name">
-      <label for="site_pw">
+      <label for="site_password">
         <h1>Site Password:</h1>
       </label>
-      <input type="text" name="site_pw" id="site_pw">
+      <input type="text" name="site_password" id="site_pw">
       <input type="submit">
     </form>
   </div>

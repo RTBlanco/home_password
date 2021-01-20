@@ -1,8 +1,8 @@
-from flask import render_template, url_for, request, redirect, session
+from flask import render_template, url_for, request, redirect, session ,Blueprint
 from home_password.models.user import User
 from home_password.models.site import Site
 from flask_login import current_user, login_required
-from flask import Blueprint
+
 
 admin = Blueprint('admin',__name__)
 
