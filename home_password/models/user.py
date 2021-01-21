@@ -1,6 +1,6 @@
 from sqlalchemy.sql.schema import ForeignKey
 from home_password import db, login_manager, bcrypt
-from home_password.models import sites
+from home_password.models import sites, messages
 from home_password.models.site import Site 
 from flask_login import UserMixin
 from flask import current_app
@@ -17,6 +17,8 @@ class User(db.Model, UserMixin):
   password = db.Column(db.String(120), unique=False, nullable=False)
   is_admin = db.Column(db.Boolean, unique=False, default=False)
   sites = db.relationship('Site', secondary=sites, lazy='subquery',
+        backref=db.backref('users', lazy=True))
+  messages = db.relationship('Message', secondary=sites, lazy='subquery',
         backref=db.backref('users', lazy=True))
   admin_id = db.Column(db.Integer, ForeignKey('user.id'))
   users = db.relationship("User")

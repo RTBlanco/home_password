@@ -27,6 +27,7 @@ def new_user():
       else:
         user = User.create_user(request.form)
         user.save()
+        user.admin_id = current_user.id
 
       user.add_sites(request.form.getlist('site'))
       user.save()
