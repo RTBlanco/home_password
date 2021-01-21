@@ -1,4 +1,4 @@
-from flask import render_template, url_for, request, redirect, session
+from flask import render_template, url_for, request, redirect, session, flash
 from home_password.models.user import User
 from home_password.models.site import Site
 from flask_login import login_user, current_user, logout_user
@@ -7,6 +7,8 @@ from flask import Blueprint
 
 main = Blueprint('main', __name__)
 
+
+@main.route('/')
 @main.route('/login',  methods=["GET",'POST'])
 def login():
   if request.method == "POST":
@@ -17,6 +19,8 @@ def login():
         return redirect(url_for('admin.home'))
       else:
         return redirect(url_for('users.home'))
+    else:
+      flash("incorrect login","error")
   return render_template('users/login.html')
 
 
