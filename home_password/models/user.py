@@ -1,3 +1,4 @@
+from sqlalchemy.sql.schema import ForeignKey
 from home_password import db, login_manager, bcrypt
 from home_password.models import sites
 from home_password.models.site import Site 
@@ -17,6 +18,8 @@ class User(db.Model, UserMixin):
   is_admin = db.Column(db.Boolean, unique=False, default=False)
   sites = db.relationship('Site', secondary=sites, lazy='subquery',
         backref=db.backref('users', lazy=True))
+  admin_id = db.Column(db.Integer, ForeignKey('user.id'))
+  users = db.relationship("User")
 
   def save(self):
     """ Adds the user to the 
