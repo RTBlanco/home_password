@@ -2,12 +2,14 @@ from flask import render_template, url_for, request, redirect, session ,Blueprin
 from home_password.models.user import User
 from home_password.models.site import Site
 from flask_login import current_user, login_required
+from home_password.blueprints.utils import admin_only
 
 
 admin = Blueprint('admin',__name__)
 
-@admin.route('/admin/home', methods=["GET"])
+@admin.route('/admin/home', methods=["GET","POST"])
 @login_required
+@admin_only
 def home():
   return render_template('users/admin/home.html')
   

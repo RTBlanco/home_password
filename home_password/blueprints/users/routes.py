@@ -3,12 +3,14 @@ from home_password.models.user import User
 from home_password.models.site import Site
 from flask_login import current_user, login_required
 from flask import Blueprint
+from home_password.blueprints.utils import user_only
 
 users = Blueprint('users', __name__)
 
 
-@users.route('/home', methods=["GET"])
+@users.route('/home', methods=["GET","POST"])
 @login_required
+@user_only
 def home():
   return render_template('users/regular/home.html')
 
