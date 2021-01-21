@@ -19,7 +19,15 @@ class User(db.Model, UserMixin):
         backref=db.backref('users', lazy=True))
 
   def save(self):
+    """ Adds the user to the 
+    session and commits """
     db.session.add(self)
+    db.session.commit()
+
+  def delete(self):
+    """ Deletes the user
+    and saves the commit """
+    db.session.delete(self)
     db.session.commit()
 
   def valid_login(self, password):

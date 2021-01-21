@@ -21,10 +21,10 @@
       {% for site in sites:%}
         <input type="checkbox" value="{{site.id}}" name="site" id="site" {%if user in site.users%}checked{%endif%}>{{site.name}}
       {% endfor %}
-      <input type="submit" value="Save" name="action">
+      <input type="submit" value="Save">
     </form>
-    <form action="" method="POST">
-      <input type="submit" value="Delete" name='action' >
+    <form action="/admin/user/delete/{{user.id}}" method="POST">
+      <input type="submit" value="Delete">
     </form>
   </div>
 {% endblock content %}

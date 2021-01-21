@@ -6,7 +6,15 @@ class Site(db.Model):
   password = db.Column(db.String(120), unique=False, nullable=False)
 
   def save(self):
+    """Add the site to the 
+    session and commits"""
     db.session.add(self)
+    db.session.commit()
+
+  def delete(self):
+    """Deletes the user and 
+    then commits the change"""
+    db.session.delete(self)
     db.session.commit()
 
   @classmethod

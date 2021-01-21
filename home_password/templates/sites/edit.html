@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="container">
+    <form action="/sites/edit/{{site.id}}" method="POST">
+      <label for="site_name">
+        <h1>Site Name:</h1>
+      </label>
+      <input type="text" name="site_name" id="site_name" value="{{site.name}}">
+      <label for="site_password">
+        <h1>Site Password:</h1>
+      </label>
+      <input type="text" name="site_password" id="site_pw" value="{{site.password}}">
+      <input type="submit" value="Save">
+    </form>
+    <form action="/sites/delete/{{site.id}}" method="POST">
+      <input type="submit" value="Delete">
+    </form>
+  </div>
+{% endblock content %}
