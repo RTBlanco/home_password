@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
-  {% if not not site%}
+  {% if not not all_sites%}
     {% for site in all_sites:%}
       <div class="container">
         <h1>Site: {{site.name}} </h1>
+        {% if current_user.is_admin %}
+          <h1>Password: {{site.password}}</h1>
+        {% endif %}
       </div>
     {% endfor %}
   {% else %}

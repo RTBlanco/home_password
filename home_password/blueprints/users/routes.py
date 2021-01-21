@@ -18,6 +18,6 @@ def home():
 @login_required
 def sites(id):
   if current_user == User.query.filter_by(id=id).first():
-    return render_template("users/regular/sites.html", sites=current_user.sites)
+    return render_template("users/regular/sites.html", all_sites=current_user.sites)
   else:
     return redirect(url_for('users.home'))
