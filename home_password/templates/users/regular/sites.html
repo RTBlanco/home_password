@@ -4,9 +4,10 @@
     {% for site in all_sites:%}
       <div class="container">
         <h1>Site: {{site.name}} </h1>
+        <h1>password: {{site.password}} </h1>
       </div>
     {% endfor %}
   {% else %}
-    <h1>There are no sites</h1>
+    <h1>You have no sites</h1>
   {% endif %}
 {% endblock content %}

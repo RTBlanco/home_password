@@ -6,6 +6,7 @@
       <h3>you are not admin</h3>
     {% endif %}
     <a href="/logout"><button>log out</button></a>
-    <a href="/sites"><button>See sites</button></a>
+    <a href="/{{current_user.id}}/sites"><button>See sites</button></a>
+    <a href="/sites"><button>Get Site</button></a>
   </div>
 {% endblock content %}
