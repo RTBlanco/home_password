@@ -1,7 +1,7 @@
-from sqlalchemy.sql.schema import ForeignKey
 from home_password import db, login_manager, bcrypt
-from home_password.models import sites, messages
+from home_password.models import sites
 from home_password.models.site import Site 
+from home_password.models.message import Message
 from flask_login import UserMixin
 from flask import current_app
 
@@ -18,10 +18,15 @@ class User(db.Model, UserMixin):
   is_admin = db.Column(db.Boolean, unique=False, default=False)
   sites = db.relationship('Site', secondary=sites, lazy='subquery',
         backref=db.backref('users', lazy=True))
-  messages = db.relationship('Message', secondary=sites, lazy='subquery',
-        backref=db.backref('users', lazy=True))
-  admin_id = db.Column(db.Integer, ForeignKey('user.id'))
-  users = db.relationship("User")
+  inbox = db.relationship('Message',backref='recip', primaryjoin=id==Message.sender_id)
+  outbox = db.relationship('Message',backref='sender', primaryjoin=id==Message.recip_id)
+
+
+
+
+  def send_msg(self, recip, content):
+    Message(sender=self, recip=recip, content=content)
+
 
   def save(self):
     """ Adds the user to the 
@@ -60,4 +65,3 @@ class User(db.Model, UserMixin):
 
   def __repr__(self):
     return f"User: {self.username}, {[i.id for i in self.sites]}"
-

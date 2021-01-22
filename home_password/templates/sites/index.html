@@ -6,8 +6,8 @@
         <h1>Site: {{site.name}} </h1>
         {% if current_user.is_admin %}
           <h1>Password: {{site.password}}</h1>
+          <a href="/sites/edit/{{site.id}}"><button>Edit</button></a>
         {% endif %}
-        <a href="/sites/edit/{{site.id}}"><button>Edit</button></a>
       </div>
     {% endfor %}
   {% else %}

@@ -36,12 +36,31 @@ def create_app(config_class=Config):
 
   return app
 
-def set_up():
-  from home_password import create_app
-  app = create_app()
-  app.app_context().push()
+# def set_up():
+#   from home_password import create_app
+#   app = create_app()
+#   app.app_context().push()
 
-  from home_password import db
-  from home_password.models.user import User
-  from home_password.models.site import Site
-  return db, User, Site
+#   from home_password import db
+#   from home_password.models.user import User, Message
+#   from home_password.models.site import Site
+#   from home_password.models.message import Message
+#   # from home_password.models import Mess
+
+#   return db, User, Site, Message
+# # def seed(User):
+# #   user = {"username":"ronny", "password":"test"}
+# #   user1 = {"username":"lia", "password":"test"}
+# #   user2 = {"username":"melanie", "password":"test"}
+# #   user3 = {"username":"samira", "password":"test"}
+# #   user4 = {"username":"amelia", "password":"test"}
+# #   user5 = {"username":"luis", "password":"test"}
+# # Message(sender=lia.id,recip=ronny.id,content="testing")
+# # from home_password import set_up
+# # db, User, Site, Message = set_up()
+# # ronny = User.create_admin(user)
+# # lia = User.create_user(user1)
+# #   seed = [user, user1, user2, user3, user4, user5]
+# #   for new_user in seed:
+# #     User.create_admin(new_user)
+

@@ -12,7 +12,7 @@ class Site(db.Model):
     db.session.commit()
 
   def delete(self):
-    """Deletes the user and 
+    """Deletes the Site and 
     then commits the change"""
     db.session.delete(self)
     db.session.commit()
