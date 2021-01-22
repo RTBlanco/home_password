@@ -36,18 +36,18 @@ def create_app(config_class=Config):
 
   return app
 
-# def set_up():
-#   from home_password import create_app
-#   app = create_app()
-#   app.app_context().push()
+def set_up():
+  from home_password import create_app
+  app = create_app()
+  app.app_context().push()
 
-#   from home_password import db
-#   from home_password.models.user import User, Message
-#   from home_password.models.site import Site
-#   from home_password.models.message import Message
-#   # from home_password.models import Mess
+  from home_password import db
+  from home_password.models.user import User, Message
+  from home_password.models.site import Site
+  from home_password.models.message import Message
+  # from home_password.models import Mess
 
-#   return db, User, Site, Message
+  return db, User, Site, Message
 # # def seed(User):
 # #   user = {"username":"ronny", "password":"test"}
 # #   user1 = {"username":"lia", "password":"test"}

@@ -21,12 +21,12 @@ class User(db.Model, UserMixin):
   inbox = db.relationship('Message',backref='recip', primaryjoin=id==Message.sender_id)
   outbox = db.relationship('Message',backref='sender', primaryjoin=id==Message.recip_id)
 
-
-
+  admin_id = db.Column(db.Integer,db.ForeignKey("user.id")) 
+  admin = db.relationship("User", remote_side=[id])
 
   def send_msg(self, recip, content):
-    Message(sender=self, recip=recip, content=content)
-
+    return Message(sender=self, recip=recip, content=content)
+    
 
   def save(self):
     """ Adds the user to the 

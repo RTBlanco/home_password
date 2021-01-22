@@ -1,7 +1,8 @@
 from home_password import db 
 
 class Message(db.Model):
-  content = db.Column(db.String(30), unique=False, nullable=False)
+  # id = db.Column(db.Integer, nullable=False, primary_key=True)
+  content = db.Column(db.String(30), unique=False)
   sender_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
   recip_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
   

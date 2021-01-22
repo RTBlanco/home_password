@@ -12,7 +12,7 @@ admin = Blueprint('admin',__name__)
 @login_required
 @admin_only
 def home():
-  return render_template('users/admin/home.html')
+  return render_template('users/admin/home.html', message=current_user.inbox)
   
 
 @admin.route('/admin/users/new', methods=["GET","POST"])
@@ -26,6 +26,7 @@ def new_user():
         user.save()
       else:
         user = User.create_user(request.form)
+        user.admin = current_user
         user.save()
 
       user.add_sites(request.form.getlist('site'))
@@ -65,3 +66,4 @@ def delete(id):
   user.delete()
   flash("User Deleted", "message")
   return redirect(url_for("admin.users"))
+

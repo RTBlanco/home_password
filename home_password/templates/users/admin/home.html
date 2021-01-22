@@ -10,5 +10,8 @@
     <a href="/sites/new"><button>Enter Site</button></a>
     <a href="/admin/users"><button>Users</button></a>
     <a href="/admin/users/new"><button>Create User</button></a>
+    {%for m in message: %}
+      <h1>{{m.content}}</h1>
+    {%endfor%}
   </div>
 {% endblock %}

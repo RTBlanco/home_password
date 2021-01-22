@@ -7,7 +7,9 @@
         {% if current_user.is_admin %}
           <h1>Password: {{site.password}}</h1>
           <a href="/sites/edit/{{site.id}}"><button>Edit</button></a>
-        {% endif %}
+        {% else %}
+          <a href="/users/message/admin"><button>Ask For Approval</button></a>
+        {%endif%}
       </div>
     {% endfor %}
   {% else %}
