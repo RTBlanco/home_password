@@ -31,9 +31,9 @@ def new_user():
 
       user.add_sites(request.form.getlist('site'))
       user.save()
-      flash("User Created", "message")
+      flash("User Created", "success")
       return redirect(url_for("admin.home"))
-    flash("Username in database", "error")
+    flash("Username in database", "danger")
   return render_template('users/admin/new_user.html', sites=Site.query.all())
 
 
@@ -55,7 +55,7 @@ def edit_user(id):
     user.sites.clear()
     user.add_sites(request.form.getlist('site'))
     user.save() 
-    flash("User Saved", "message")
+    flash("User Saved", "success")
   return render_template('users/admin/edit_user.html', user=user, sites=sites)
     
 
@@ -65,5 +65,5 @@ def edit_user(id):
 def delete(id):
   user = User.query.filter_by(id=id).first_or_404()
   user.delete()
-  flash("User Deleted", "message")
+  flash("User Deleted", "success")
   return redirect(url_for("admin.users"))
