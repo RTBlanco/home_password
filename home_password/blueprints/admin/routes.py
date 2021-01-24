@@ -12,7 +12,8 @@ admin = Blueprint('admin',__name__)
 @login_required
 @admin_only
 def home():
-  return render_template('users/admin/home.html', sites=Site.query.all(), users=User.query.all())
+  users = [user for user in User.query.all() if user != current_user]
+  return render_template('users/admin/home.html', sites=Site.query.all(), users=users)
   
 
 @admin.route('/admin/users/new', methods=["GET","POST"])

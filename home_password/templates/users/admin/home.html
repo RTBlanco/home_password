@@ -20,7 +20,7 @@
             {% for site in sites: %}
               <tr>
                 <td>{{site.name}}
-                  <button class="btn btn-info edit-btn">View</button>
+                  <a href="/sites/edit/{{site.id}}"><button class="btn btn-info edit-btn">View</button></a>
                 </td>
               </tr>
             {% endfor %}
@@ -36,7 +36,7 @@
             {% for user in users: %}
               <tr>
                 <td>{{user.username}} 
-                  <button class="btn btn-info edit-btn">View</button>
+                  <a href="/admin/users/edit/{{user.id}}"><button class="btn btn-info edit-btn">View</button></a>
                 </td>
               </tr>
             {% endfor %}
