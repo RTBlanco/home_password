@@ -1,16 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
   <div class='container'>
-    <form action="/login" method="POST">
-      <label for="username">
-        <h1>username</h1>
-      </label>
-      <input type="text" name="username" id="username">
-      <label for="password">
-        <h1>password</h1>
-      </label>
-      <input type="password" name="password" id="password">
-      <input type="submit">
-    </form>
+    <div class="row justify-content-md-center">
+      <form class="col-lg-4 text-align-center login" action="/login" method="POST">
+        <div class="form-group">
+          <label for="username">
+            <h1>username</h1>
+          </label>
+          <input class="form-control" type="text" name="username" id="username">
+          <label for="password">
+            <h1>password</h1>
+          </label>
+          <input class="form-control" type="password" name="password" id="password">
+          <input class="btn btn-primary" type="submit">
+        </div>
+      </form>
+    </div>
   </div>
 {% endblock content %}
