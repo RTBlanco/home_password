@@ -37,6 +37,8 @@ def create_app(config_class=Config):
   return app
 
 def set_up():
+  # this is a helper method for running 
+  # in interactive window
   from home_password import create_app
   app = create_app()
   app.app_context().push()
