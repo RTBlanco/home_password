@@ -12,7 +12,20 @@
   <div class="container">
     <div class="row justify-content-between">
       <div class="col-lg-5 hp-lists">
-        <div class="">Sites</div>
+        <table class="table hp-table">
+          <thead>
+            <th>Sites</th>
+          </thead>
+          <tbody>
+            {% for site in sites: %}
+              <tr>
+                <td>{{site.name}}
+                  <button class="btn btn-info edit-btn">View</button>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
       <div class="col-lg-5 hp-lists">
         <table class="table hp-table">
@@ -22,7 +35,9 @@
           <tbody>
             {% for user in users: %}
               <tr>
-                <td>{{user.username}}</td>
+                <td>{{user.username}} 
+                  <button class="btn btn-info edit-btn">View</button>
+                </td>
               </tr>
             {% endfor %}
           </tbody>

@@ -7,10 +7,9 @@
 
 .hp-lists {
   display: block;
-  background-color: rgb(151, 151, 151); 
+  /*   */
   text-align: center;
   margin-top: 50px;
-  border-radius: 10px;
   padding: 0px;
 }
 .hp-user {
@@ -28,10 +27,16 @@ thead {
 .hp-table {
   border: 2px solid #343a40;
   margin-bottom: 0rem;
+  background-color: rgb(151, 151, 151);
+  border-radius: 10px;
 }
 
 tbody {
   color: white;
+}
+
+.edit-btn{
+  float: right;
 }
 
 @media only screen and (max-width: 544px) {
