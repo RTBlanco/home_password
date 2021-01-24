@@ -12,7 +12,7 @@ users = Blueprint('users', __name__)
 @login_required
 @user_only
 def home():
-  return render_template('users/regular/home.html')
+  return render_template('users/regular/home.html', sites=current_user.sites)
 
 @users.route("/<int:id>/sites", methods=["GET","POST"])
 @login_required
