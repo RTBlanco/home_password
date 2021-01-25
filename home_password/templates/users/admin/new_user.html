@@ -57,9 +57,9 @@
             </fieldset>
             <div class="form-group row">
               <label class="my-1 mr-2" for="site">Sites:</label>
-              <select class="custom-select" size="3" id="site" multiple>
+              <select name='site' class="custom-select" size="3" id="site" multiple>
                 {% for site in sites:%}
-                  <option value="1">{{site.name}}</option>
+                  <option value="{{site.id}}">{{site.name}}</option>
                 {% endfor %}
               </select>
             </div>

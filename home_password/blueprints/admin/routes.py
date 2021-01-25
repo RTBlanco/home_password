@@ -4,6 +4,7 @@ from home_password.models.user import User
 from home_password.models.site import Site
 from flask_login import current_user, login_required
 from home_password.blueprints.utils import admin_only
+from ipdb import set_trace
 
 
 admin = Blueprint('admin',__name__)
@@ -22,13 +23,14 @@ def new_user():
   if request.method == "POST":
     print(dict(request.form))
     if User.query.filter_by(username=request.form["username"]).first() is None:
-      if 'admin' in request.form:
+      if 'admin' in request.form and 'admin' == request.form["user_type"]:
         user = User.create_admin(request.form)
         user.save()
       else:
         user = User.create_user(request.form)
         user.save()
 
+      set_trace(context=5)
       user.add_sites(request.form.getlist('site'))
       user.save()
       flash("User Created", "success")
