@@ -1,27 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-  <!-- <div class="container">
-    <form action="/admin/users/new" method="POST">
-      <label for="username">
-        <h1>Username:</h1>
-      </label>
-      <input type="text" name="username" id="username" required>
-      <label for="password">
-        <h1>Password:</h1>
-      </label>
-      <input type="text" name="password" id="password" required>
-      <br>
-      <input type="radio" name="user_type" value="admin" id="admin">admin
-      <br>
-      <label for="site">
-        <h1>Sites</h1>
-      </label>
-      {% for site in sites:%}
-        <input type="checkbox" value="{{site.id}}" name="site" id="site">{{site.name}}
-      {% endfor %}
-      <input type="submit">
-    </form>
-  </div> -->
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-7 hp-form-block">
@@ -31,16 +9,10 @@
         <div class="row hp-form-content">
           <form class="hp-form" action="/admin/users/new" method="POST">
             <div class="form-group row hp-form-input" >
-              <!-- <label for="username">Username:</label> -->
-              <!-- <div class="col-sm-10"> -->
               <input class="form-control" type="text" name="username" id="username" placeholder="username" required>
-              <!-- </div> -->
             </div>
             <div class="form-group row hp-form-input">
-              <!-- <label for="password">Password:</label> -->
-              <!-- <div class="col-sm-10"> -->
               <input class="form-control" type="text" name="password" id="password" placeholder="password" required>
-              <!-- </div> -->
             </div>
             <fieldset class="form-group">
               <div class="row">
