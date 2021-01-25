@@ -64,6 +64,22 @@ tbody {
   border-bottom: 2px solid white;
 }
 
+.hp-form-content {
+  justify-content: center;
+  padding: 23px;
+  height: 91%;
+}
+
+.hp-form {
+  height: 87%;
+  width: 69%;
+  margin-top: 75px;
+}
+
+.hp-form-input{
+  margin-bottom: 72px
+}
+
 @media only screen and (max-width: 544px) {
   .login {
     margin: 5%;
