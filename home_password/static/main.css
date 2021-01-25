@@ -48,6 +48,22 @@ tbody {
   width: 25px;
 }
 
+.hp-form-block {
+  display: block;
+  background: rgb(151, 151, 151);
+  height: 80vh;
+  margin: 6% 0%;
+  border: 3px solid black;
+}
+
+.hp-form-header {
+  height: 70px;
+  background-color: #343a40;
+  color: white;
+  justify-content: center;
+  border-bottom: 2px solid white;
+}
+
 @media only screen and (max-width: 544px) {
   .login {
     margin: 5%;
