@@ -29,8 +29,8 @@ def new_user():
       else:
         user = User.create_user(request.form)
         user.save()
-
-      set_trace(context=5)
+      
+      
       user.add_sites(request.form.getlist('site'))
       user.save()
       flash("User Created", "success")
