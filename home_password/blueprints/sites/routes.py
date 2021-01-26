@@ -5,11 +5,6 @@ from home_password.blueprints.utils import admin_only
 
 sites = Blueprint('sites', __name__)
 
-@sites.route('/sites', methods=["GET"])
-@login_required
-def site():
-  return render_template('sites/index.html', all_sites=Site.query.all())
-
 @sites.route('/sites/new', methods=["GET", "POST"])
 @login_required
 @admin_only
@@ -19,7 +14,7 @@ def new_site():
     site.save()
     current_user.sites.append(site)
     current_user.save()
-    return redirect(url_for('sites.site'))
+    return redirect(url_for('admin.home'))
   return render_template('sites/new.html')
 
 
@@ -32,7 +27,7 @@ def edit(id):
     site.name = request.form["site_name"]
     site.password = request.form["site_password"]
     site.save()
-    flash("Save successful", "message")
+    flash("Save successful", "success")
   return render_template("sites/edit.html", site=site)
 
 
@@ -42,5 +37,5 @@ def edit(id):
 def delete(id):
   site = Site.query.filter_by(id=id).first_or_404()
   site.delete()
-  flash("Site Deleted", "message")
+  flash("Site Deleted", "success")
   return redirect(url_for("sites.site"))

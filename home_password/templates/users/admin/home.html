@@ -1,13 +1,53 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class="container">
+  <div class="container hp-user">
     <div class="row justify-content-lg-center">
       <div class="col-lg-6">
-        <h1>logged in is {{current_user.username}}</h1>
+        <h1>{{current_user.username}}</h1>
         <h3>you are admin</h3>
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-5 hp-lists">
+        <table class="table hp-table">
+          <thead>
+            <th>Sites <a href="/sites/new"><img id="new_btn" src="/static/images/grey_pencil.png" alt=""></a></th>
+          </thead>
+          <tbody>
+            {% for site in sites: %}
+              <tr>
+                <td>{{site.name}}
+                  <a href="/sites/edit/{{site.id}}"><button class="btn btn-info edit-btn">View</button></a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="col-lg-5 hp-lists">
+        <table class="table hp-table">
+          <thead>
+            <th>Users <a href="/admin/users/new"><img id="new_btn" src="/static/images/grey_pencil.png" alt=""></a></th>
+          </thead>
+          <tbody>
+            {% for user in users: %}
+              <tr>
+                <td>{{user.username}} 
+                  <a href="/admin/users/edit/{{user.id}}"><button class="btn btn-info edit-btn">View</button></a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
 {% endblock %}
     <!-- <a href="/logout"><button>Log Out</button></a>
     <a href="/sites"><button>Sites</button></a>

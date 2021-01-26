@@ -1,12 +1,36 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class="container">
-    <h1>you are logged in as {{current_user.username}} </h1>
-    {% if not current_user.is_admin %}
-      <h3>you are not admin</h3>
-    {% endif %}
-    <a href="/logout"><button>log out</button></a>
-    <a href="/{{current_user.id}}/sites"><button>See sites</button></a>
-    <a href="/sites"><button>Get Site</button></a>
+  <div class="container hp-user">
+    <div class="row justify-content-lg-center">
+      <div class="col-lg-6">
+        <h1>{{current_user.username}}</h1>
+        <h3>you are not admin</h3>
+      </div>
+    </div>
   </div>
-{% endblock content %}
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 hp-lists">
+        <table class="table table-bordered hp-table">
+          <thead>
+            <th colspan="2">Sites</th>
+          </thead>
+          <tbody>
+            {% for site in sites: %}
+              <tr>
+                <td>{{site.name}}</td>
+                <td>{{site.password}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+    <!-- <a href="/logout"><button>Log Out</button></a>
+    <a href="/sites"><button>Sites</button></a>
+    <a href="/sites/new"><button>Enter Site</button></a>
+    <a href="/admin/users"><button>Users</button></a>
+    <a href="/admin/users/new"><button>Create User</button></a> -->
