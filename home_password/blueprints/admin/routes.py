@@ -53,14 +53,10 @@ def edit_user(id):
   user = User.query.filter_by(id=id).first_or_404()
   sites = Site.query.all()
   if request.method == "POST":
-    if 'delete' not in request.form:
-      # set_trace(context=5)
-      user.sites.clear()
-      user.add_sites(request.form.getlist('site'))
-      user.save() 
-      flash("User Saved", "success")
-    else:
-      return redirect(f'/admin/user/delete/{user.id}')
+    user.sites.clear()
+    user.add_sites(request.form.getlist('site'))
+    user.save() 
+    flash("User Saved", "success")
   return render_template('users/admin/edit_user.html', user=user, sites=sites)
     
 
