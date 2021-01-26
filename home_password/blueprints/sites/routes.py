@@ -32,7 +32,7 @@ def edit(id):
     site.name = request.form["site_name"]
     site.password = request.form["site_password"]
     site.save()
-    flash("Save successful", "message")
+    flash("Save successful", "success")
   return render_template("sites/edit.html", site=site)
 
 
@@ -42,5 +42,5 @@ def edit(id):
 def delete(id):
   site = Site.query.filter_by(id=id).first_or_404()
   site.delete()
-  flash("Site Deleted", "message")
+  flash("Site Deleted", "success")
   return redirect(url_for("sites.site"))

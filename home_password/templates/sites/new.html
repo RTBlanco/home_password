@@ -1,16 +1,25 @@
 {% extends "layout.html" %}
 {% block content %}
   <div class="container">
-    <form action="/sites/new" method="POST">
-      <label for="site_name">
-        <h1>Site Name:</h1>
-      </label>
-      <input type="text" name="site_name" id="site_name">
-      <label for="site_password">
-        <h1>Site Password:</h1>
-      </label>
-      <input type="text" name="site_password" id="site_pw">
-      <input type="submit">
-    </form>
+    <div class="row justify-content-center">
+      <div class="col-lg-7 hp-form-block">
+        <div class="row hp-form-header">
+          <h1>Enter New Site</h1>
+        </div>
+        <div class="row hp-form-content">
+          <form class="hp-form" action="/sites/new" method="POST">
+            <div class="form-group row hp-form-input" >
+              <input class="form-control" type="text" name="site_name" id="site_name" placeholder="Site Name" required>
+            </div>
+            <div class="form-group row hp-form-input">
+              <input class="form-control" type="text" name="site_password" id="site_password" placeholder="password" required>
+            </div>
+            <div class="form-group-row hp-form-btn">
+              <input class="btn btn-primary" type="submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock content %}

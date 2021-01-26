@@ -29,8 +29,7 @@ def new_user():
       else:
         user = User.create_user(request.form)
         user.save()
-      
-      
+
       user.add_sites(request.form.getlist('site'))
       user.save()
       flash("User Created", "success")
@@ -54,18 +53,22 @@ def edit_user(id):
   user = User.query.filter_by(id=id).first_or_404()
   sites = Site.query.all()
   if request.method == "POST":
-    user.sites.clear()
-    user.add_sites(request.form.getlist('site'))
-    user.save() 
-    flash("User Saved", "success")
+    if 'delete' not in request.form:
+      # set_trace(context=5)
+      user.sites.clear()
+      user.add_sites(request.form.getlist('site'))
+      user.save() 
+      flash("User Saved", "success")
+    else:
+      return redirect(f'/admin/user/delete/{user.id}')
   return render_template('users/admin/edit_user.html', user=user, sites=sites)
     
 
-@admin.route("/admin/user/delete/<int:id>", methods=["POST"])
+@admin.route("/admin/user/delete/<int:id>")
 @login_required
 @admin_only
 def delete(id):
   user = User.query.filter_by(id=id).first_or_404()
   user.delete()
   flash("User Deleted", "success")
-  return redirect(url_for("admin.users"))
+  return redirect(url_for("admin.home"))
