@@ -17,35 +17,6 @@ def home():
   return render_template('users/admin/home.html', sites=Site.query.all(), users=users)
   
 
-@admin.route('/admin/users/new', methods=["GET","POST"])
-@login_required
-def new_user():
-  if request.method == "POST":
-    print(dict(request.form))
-    if User.query.filter_by(username=request.form["username"]).first() is None:
-      if 'admin' in request.form and 'admin' == request.form["user_type"]:
-        user = User.create_admin(request.form)
-        user.save()
-      else:
-        user = User.create_user(request.form)
-        user.save()
-
-      user.add_sites(request.form.getlist('site'))
-      user.save()
-      flash("User Created", "success")
-      return redirect(url_for("admin.home"))
-    flash("Username in database", "danger")
-  return render_template('users/admin/new_user.html', sites=Site.query.all())
-
-
-@admin.route('/admin/users', methods=["GET"])
-@login_required
-@admin_only
-def users():
-  users = User.query.filter(User.id != current_user.id).all()
-  return render_template('users/admin/index.html', users=users)
-
-
 @admin.route('/admin/users/edit/<int:id>', methods=["POST", "GET"])
 @login_required
 @admin_only
