@@ -38,4 +38,4 @@ def delete(id):
   site = Site.query.filter_by(id=id).first_or_404()
   site.delete()
   flash("Site Deleted", "success")
-  return redirect(url_for("sites.site"))
+  return redirect(url_for("admin.home"))

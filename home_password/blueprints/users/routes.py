@@ -22,7 +22,7 @@ def new_user():
   if request.method == "POST":
     print(dict(request.form))
     if User.query.filter_by(username=request.form["username"]).first() is None:
-      if 'admin' in request.form and 'admin' == request.form["user_type"]:
+      if 'user_type' in request.form:
         user = User.create_admin(request.form)
         user.save()
       else:

@@ -24,6 +24,10 @@ def edit_user(id):
   user = User.query.filter_by(id=id).first_or_404()
   sites = Site.query.all()
   if request.method == "POST":
+    if 'user_type' in request.form and 'admin' == request.form["user_type"]:
+      user.is_admin = True
+    else:
+      user.is_admin = False
     user.sites.clear()
     user.add_sites(request.form.getlist('site'))
     user.save() 
