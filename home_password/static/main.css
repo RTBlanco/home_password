@@ -152,4 +152,20 @@ input:checked + .hp-slider:before {
   .login {
     margin: 5%;
   }
+
+  .hp-form-input {
+    margin: 8px;
+  }
+
+  .hp-form {
+    margin-top: 0px;
+  }
+
+  .hp-form-block{
+    margin: 0px;
+  }
+
+  .hp-form-btn{
+    margin-top: -7px;
+  }
 }
