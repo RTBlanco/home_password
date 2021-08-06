@@ -1,5 +1,5 @@
  # Home Password 
-This is a simple web app that allows users to store and share a site and their passwords. This is perfect if in your house or office you happen to be the one that keeps track of important passwords, now you would be able to upload and save a site with a corresponding password so that others (that are logged in ) can view them. As the admin user, you are in charge of creating new users and allowing them to have access to a site
+This is a simple web app that allows users to store and share a site and their passwords to people in the same household. This is perfect if in your house or office you happen to be the one that keeps track of important passwords, now you would be able to upload and save a site with a corresponding password so that others (that are logged in ) can view them. As the admin user, you are in charge of creating new users and allowing them to have access to a site
 
 ## Installation and Usage
 make sure you have python 3.9 or above
