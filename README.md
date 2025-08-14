@@ -1,14 +1,15 @@
  # Home Password 
-This is a simple web app that allows users to store and share a site and their passwords to people in the same household. This is perfect if in your house or office you happen to be the one that keeps track of important passwords, now you would be able to upload and save a site with a corresponding password so that others (that are logged in ) can view them. As the admin user, you are in charge of creating new users and allowing them to have access to a site
+Home Password – Flask-based web app enabling households to store and share site credentials securely. Admins manage users and access control. Written in Python 3.9+, using pipenv for dependency handling and a clean, intuitive UI.
+
 
 ## Installation and Usage
-make sure you have python 3.9 or above
+Make sure you have python 3.9 or above
 
-First, fork and clone the repository and where on your local machine. After it has been correctly cloned, navigate into the home_password directory and in your terminal execute:
+First, fork and clone the repository on your local machine. After it has been correctly cloned, navigate into the home_password directory and in your terminal execute:
 
     pipenv install 
 
-This is will download all the correct packages needed to run. After everything is correctly installed in the terminal enter 
+This will download all the correct packages needed to run. After everything is correctly installed in the terminal, enter 
   
     $ python run.py
   
